@@ -2,7 +2,8 @@ import fs from "fs/promises";
 import path from "path";
 import { nanoid } from "nanoid";
 
-const contactsPath = path.resolve("models",  "contacts.json");
+const contactsPath = path.resolve("models", "contacts.json");
+console.log(contactsPath)
 const updateContactsStorage = (contacts) =>
   fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
 
