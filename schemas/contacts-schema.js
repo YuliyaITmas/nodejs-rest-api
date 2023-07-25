@@ -20,5 +20,15 @@ const contactsAddSchema = Joi.object({
       "string.pattern.base":
         "The phone field must contain only digits, spaces, parentheses, plus signs, and hyphens",
     }),
+  favorite: Joi.boolean(),
 });
- export default {contactsAddSchema}
+
+const contactUpdateStatusSchema = Joi.object({
+  favorite: Joi.boolean().required().messages({
+    "boolean.base": "The favorite field must be a boolean",
+  }),
+});
+export default {
+  contactsAddSchema,
+  contactUpdateStatusSchema,
+};
