@@ -3,12 +3,15 @@ import contactsController from "../../controllers/contacts-controller.js";
 import contactsSchema from "../../schemas/contacts-schema.js";
 import { validateBody } from "../../decorators/index.js";
 import {
+  authenticate,
   isEmptyBody,
   isEmptyStatus,
   isValidId,
 } from "../../middlewars/index.js";
 
 const router = express.Router();
+
+router.use(authenticate);
 
 router.get("/", contactsController.getList);
 
