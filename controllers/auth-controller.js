@@ -101,11 +101,9 @@ const updateAvatar = async (req, res) => {
   const { _id } = req.user;
   const { path: oldPath, originalname } = req.file;
 
-  console.log(req.file);
-
   await Jimp.read(oldPath)
-    .then((avatar) => {
-      return avatar.resize(250, 250).write(oldPath);
+    .then(async (avatar) => {
+      await avatar.resize(250, 250).writeAsync(oldPath);
     })
     .catch((err) => {
       console.error(err);
