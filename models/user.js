@@ -1,14 +1,14 @@
 import { Schema, model } from "mongoose";
 
 import { handleSaveError, validateAtUpdate } from "./hooks.js";
-import {emailRegexp} from "../constants/user-constants.js"
+import { emailRegexp } from "../constants/user-constants.js";
 
 const userSchema = new Schema(
   {
     password: {
       type: String,
       required: [true, "Set password for user"],
-      minlenth: 6,
+      minlength: 6,
     },
     email: {
       type: String,
@@ -23,6 +23,14 @@ const userSchema = new Schema(
     },
     token: String,
     avatarURL: String,
+    verify: {
+      type: Boolean,
+      default: false,
+    },
+    verificationToken: {
+      type: String,
+      required: [true, "Verify token is required"],
+    },
   },
   { versionKey: false, timestamps: true }
 );
